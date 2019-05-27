@@ -26,21 +26,6 @@
 
 	              <div class="cover-container">
 
-<button type="button" onclick="work()">Worker</button>
-
-	<script>
-	function work () {
-      		$.ajax({
-        	url:"worker.php",
-        	data: {action: 'consume'},
-        	type: "POST", //request type
-        	success:function(result){
-         	alert(result);
-       		}
-     		});
- 		}
-	</script>
-
 
 
  <div class="masthead clearfix">
@@ -77,13 +62,26 @@
       	    document.getElementById("demo").innerHTML = fuck;
 	</script>
 
-    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-            <p class="lead">
-              <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+    <p class="lead">Simple Email tester based on RabbitMQ.</p>
+            <p class="lead" onclick="work()">
+              <a href="#" class="btn btn-lg btn-secondary">Worker</a>
             </p>
 
 
           </div>
+
+	<script>
+	function work () {
+      		$.ajax({
+        	url:"worker.php",
+        	data: {action: 'consume'},
+        	type: "POST", //request type
+        	success:function(result){
+         	alert(result);
+       		}
+     		});
+ 		}
+	</script>
 
           <div class="mastfoot">
             <div class="inner">

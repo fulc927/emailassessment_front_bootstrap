@@ -22,11 +22,11 @@ try {
 	$queue = new AMQPQueue($channel);
 	$queue->setFlags(AMQP_AUTODELETE);
 //	$queue->setFlags(AMQP_PASSIVE);
-	//$bdkey = generateRandomString();
 	//$queue->setName($bdkey);
 	$queue->setName('bitocul');
 	$queue->declareQueue();
-	$bdkey = "contact@patatedouce.fr";
+	$bdkey = generateRandomString();
+	//$bdkey = "contact@patatedouce.fr";
 	echo $bdkey;
 	//echo "\r";
 	//$queue->declareQueue($bdkey);

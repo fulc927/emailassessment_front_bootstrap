@@ -1,5 +1,4 @@
 <?php
-
 //Establish connection AMQP
 $connection = new AMQPConnection();
 $connection->setHost('192.168.0.15');
@@ -10,10 +9,18 @@ $connection->connect();
 $channel = new AMQPChannel($connection);
 $routing_key = 'hello';
 $callback_func = function(AMQPEnvelope $message, AMQPQueue $q) use (&$max_jobs) {
-	echo " [x] Received: ", $message->getBody(), PHP_EOL;
+//	echo " [x] Received: ", $message->getBody(), PHP_EOL;
 //	sleep(sleep(substr_count($message->getBody(), '.')));
 	//echo " [X] Done", PHP_EOL;
 	$q->ack($message->getDeliveryTag());
+	global $i;
+        echo "Message $i: " . $message->getBody() . "\n";
+        $i++;
+        if ($i = 1) {
+            // Bail after 1 message
+            return false;
+        }
+	
 };
 try{
 	$queue = new AMQPQueue($channel);
