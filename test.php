@@ -2,11 +2,8 @@
 session_start();
 function test(){
 $connection = new AMQPConnection();
-$config = parse_ini_file('./amqpconnect.ini'); 
 $connection->setHost('185.246.84.157');
-//$connection->setLogin($config['username']);
 $connection->setLogin('fulc927');
-//$connection->setPassword($config['password']);
 $connection->setPassword('fulc927');
 $connection->connect();
 $channel = new AMQPChannel($connection);
