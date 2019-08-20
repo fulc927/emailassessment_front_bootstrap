@@ -54,7 +54,6 @@
     		}
   		});
 		}
-
 	    var fuck = testAjax(function(output){
   		// here you use the output
       		console.log(output);
@@ -73,7 +72,7 @@
 	<script>
 	function work () {
       		$.ajax({
-        	url:"worker.php",
+        	url:"consume.php",
         	data: {action: 'consume'},
         	type: "POST", //request type
         	success:function(result){

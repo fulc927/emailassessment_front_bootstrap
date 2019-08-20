@@ -1,42 +1,48 @@
 <?php
-//CELUI AVEC LE BITOCUL
-
+session_start();
 function test(){
-//Establish connection to AMQP
 $connection = new AMQPConnection();
-$connection->setHost('192.168.0.15');
+$connection->setHost('185.246.84.157');
 $connection->setLogin('fulc927');
 $connection->setPassword('fulc927');
 $connection->connect();
-//Create and declare channel
 $channel = new AMQPChannel($connection);
 try {
-	//Declare Exchange
 	$exchange = new AMQPExchange($channel);
 	$exchange_name = 'email-in';
 	$exchange->setType(AMQP_EX_TYPE_TOPIC);
 	$exchange->setName($exchange_name);
 	$exchange->setFlags(AMQP_DURABLE);
 	$exchange->declareExchange();
-	//Do not declasre the queue name by setting AMQPQueue::setName()
 	$queue = new AMQPQueue($channel);
 	$queue->setFlags(AMQP_AUTODELETE);
-//	$queue->setFlags(AMQP_PASSIVE);
-	//$queue->setName($bdkey);
-	$queue->setName('bitocul');
+	$queue->setName('incoming_message');
 	$queue->declareQueue();
 	$bdkey = generateRandomString();
-	//$bdkey = "contact@patatedouce.fr";
+	$_SESSION['key'] = $bdkey;
 	echo $bdkey;
-	//echo "\r";
-	//$queue->declareQueue($bdkey);
 	$queue->bind($exchange_name,$bdkey);
-	//echo sprintf("Queue Name: %s", $queue->getName()), PHP_EOL;
 	} catch(Exception $exchange) {
 		print_r($exchange);
-	}
-
+	}	
+	try {
+	$channel->setPrefetchCount(1);	
+	$exchange_name2 = 'topic_spamass';
+	$exchange2 = new AMQPExchange($channel);
+	$exchange2->setType(AMQP_EX_TYPE_TOPIC);
+	$exchange2->setName($exchange_name2);
+	$exchange2->declareExchange();
+	$queue = new AMQPQueue($channel);
+	$queue->setFlags(AMQP_AUTODELETE);
+	$queue->setName($bdkey);
+	$queue->declareQueue();
+	$queue->bind($exchange_name2, $bdkey);
+    } catch(AMQPQueueException $ex) {
+	print_r($ex);
+    } catch(Exception $ex) {
+	print_r($ex);	
 $connection->disconnect();
+	}	
 }
 function generateRandomString($length = 10) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -45,7 +51,7 @@ function generateRandomString($length = 10) {
     for ($i = 0; $i < $length; $i++) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
-    return $randomString."@patatedouce.fr";
+    return $randomString."@rabbithole.fr";
 }
 test();
 ?>
