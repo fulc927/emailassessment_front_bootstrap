@@ -3,7 +3,7 @@ session_start();
 function test(){
 $connection = new AMQPConnection();
 $config = parse_ini_file('./amqpconnect.ini'); 
-$connection->setHost($config['servername']);
+//$connection->setHost($config['servername']);
 //$connection->setHost('185.246.84.157');
 $connection->setLogin('fulc927');
 $connection->setPassword('fulc927');
