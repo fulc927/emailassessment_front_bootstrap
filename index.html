@@ -60,22 +60,19 @@
        		});
       	    document.getElementById("demo").innerHTML = fuck;
 	</script>
-
     <p class="lead">Simple Email tester based on RabbitMQ.</p>
             <p class="lead" onclick="work()">
               <a href="#" class="btn btn-lg btn-secondary">Worker</a>
             </p>
-
     <p id="result" class="result">The result</p>
           </div>
-
 	<script>
-	function work () {
+	function work (handledata) {
       		$.ajax({
         	url:"consume.php",
         	data: {action: 'consume'},
-        	type: "POST", //request type
-        	success:function(result){
+        	type: "post", //request type
+        	success:function(data){
          	//alert(result);
 	        $('#result').html(data);
        		}
