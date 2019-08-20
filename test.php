@@ -5,8 +5,10 @@ $connection = new AMQPConnection();
 $config = parse_ini_file('./amqpconnect.ini'); 
 $connection->setHost($config['servername']);
 	echo $config['servername'];
-$connection->setLogin($config['username']);
-$connection->setPassword($config['password']);
+//$connection->setLogin($config['username']);
+$connection->setLogin('fulc927');
+//$connection->setPassword($config['password']);
+$connection->setPassword('fulc927');
 $connection->connect();
 $channel = new AMQPChannel($connection);
 try {
