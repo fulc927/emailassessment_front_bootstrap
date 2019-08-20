@@ -66,7 +66,7 @@
               <a href="#" class="btn btn-lg btn-secondary">Worker</a>
             </p>
 
-    <p class="result">The result</p>
+    <p id="result" class="result">The result</p>
           </div>
 
 	<script>
@@ -77,10 +77,15 @@
         	type: "POST", //request type
         	success:function(result){
          	//alert(result);
- 		console.log(result);
+	        $('#result').html(data);
        		}
      		});
  		}
+		var calculescore = testAjax(function(output){
+  		// here you use the output
+      		console.log(output);
+       		});
+      	    document.getElementById("result").innerHTML = calculescore;
 	</script>
 
           <div class="mastfoot">
