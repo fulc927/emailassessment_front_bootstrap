@@ -4,6 +4,7 @@ function test(){
 $connection = new AMQPConnection();
 $config = parse_ini_file('./amqpconnect.ini'); 
 $connection->setHost($config['servername']);
+	echo $config['servername'];
 $connection->setLogin($config['username']);
 $connection->setPassword($config['password']);
 $connection->connect();
