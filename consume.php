@@ -12,8 +12,8 @@ $callback_func = function(AMQPEnvelope $message, AMQPQueue $queue) use (&$max_jo
 	$queue->ack($message->getDeliveryTag());
 	global $i;
 	if(isset($_POST['action']) && !empty($_POST['action'])) {
-        echo json_encode($message->getBody()). "\n";
-        //echo "Message $i: " . $message->getBody() . "\n";
+        //echo json_encode($message->getBody()). "\n";
+        echo "Message $i: " . $message->getBody() . "\n";
 
          }
 
