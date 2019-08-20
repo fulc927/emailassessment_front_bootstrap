@@ -11,13 +11,11 @@ $callback_func = function(AMQPEnvelope $message, AMQPQueue $queue) use (&$max_jo
 	//$message = $queue->get(AMQP_AUTOACK);
 	$queue->ack($message->getDeliveryTag());
 	global $i;
-	echo '<div>
-              <h3><a href="#">First</a></h3>
-              <div>'. $message->getBody() .'</div>
-             </div>
-             <div>';
+	if(isset($_POST['action']) && !empty($_POST['action'])) {
+        echo json_encode(array("blablabla"=>$variable));
+         }
 
-        echo "Message $i: " . $message->getBody() . "\n";
+        //echo "Message $i: " . $message->getBody() . "\n";
         $i++;
         if ($i = 1) {
             // Bail after 1 message
