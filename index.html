@@ -24,11 +24,11 @@
     <div class="site-wrapper">
       <div class="site-wrapper-inner">
 
-	              <div class="cover-container">
+	  <div class="cover-container">
 
 
 
- <div class="masthead clearfix">
+         <div class="masthead clearfix">
             <div class="inner">
               <h3 class="masthead-brand">Cover</h3>
               <nav class="nav nav-masthead">
@@ -39,35 +39,32 @@
             </div>
           </div>
 
-          <div class="inner cover">
-
+            <div class="inner cover">
             <h1 id="demo"  class="cover-heading"></h1>
-
-            <script>    
-            function testAjax(handleData) {
+                <script>    
+                function testAjax(handleData) {
   		$.ajax({
         	url: 'test.php',
                 data: {action: 'test'},
                 type: 'post',
     		success:function(data) {
-	        $('#demo').html(data);
-    		}
-  		});
+	        $('#demo').html(data);	}});
 		}
-	    var fuck = testAjax(function(output){
+	        var fuck = testAjax(function(output){
   		// here you use the output
       		console.log(output);
        		});
-      	    document.getElementById("demo").innerHTML = fuck;
-	</script>
-    <p class="lead">Simple Email tester based on RabbitMQ.</p>
+      	        document.getElementById("demo").innerHTML = fuck;
+		</script>     
+		  
+	    <p class="lead">Simple Email tester based on RabbitMQ.</p>
             <p class="lead" onclick="work()">
-              <a href="#" class="btn btn-lg btn-secondary">Worker</a>
-            </p>
-    <p id="result" class="result">The result</p>
-          </div>
-	<script>
-	function work () {
+            <a href="#" class="btn btn-lg btn-secondary">Worker</a> </p>
+	    <p id="result" class="result">The result</p>
+           </div>
+			      
+	       <script>
+	       function work () {
       		$.ajax({
         	url:"consume.php",
         	data: {action: 'consume'},
@@ -82,8 +79,8 @@
   		// here you use the output
       		console.log(output);
        		});
-      	    document.getElementById("result").innerHTML = calculescore;
-	</script>
+      	       document.getElementById("result").innerHTML = calculescore;
+	       </script>
 
           <div class="mastfoot">
             <div class="inner">
