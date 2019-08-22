@@ -38,10 +38,10 @@ try {
 	$queue->setName($bdkey);
 	$queue->declareQueue();
 	$queue->bind($exchange_name2, $bdkey);
-    } catch(AMQPQueueException $ex) {
-	print_r($ex);
-    } catch(Exception $ex) {
-	print_r($ex);	
+    } catch(AMQPQueueException $exchange2) {
+	print_r($exchange2);
+    } catch(Exception $exchange2) {
+	print_r($exchange2);	
 $connection->disconnect();
 	}	
 }
