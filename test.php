@@ -21,6 +21,7 @@ try {
 	$queue->declareQueue();
 	$bdkey = generateRandomString();
 	$_SESSION['key'] = $bdkey;
+	echo $bdkey;
 	$queue->bind($exchange_name,$bdkey);
 	} catch(Exception $exchange) {
 		print_r($exchange);
