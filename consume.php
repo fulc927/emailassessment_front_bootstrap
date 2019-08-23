@@ -25,6 +25,7 @@ $callback_func = function(AMQPEnvelope $message, AMQPQueue $queue) use (&$max_jo
         }
 	};
 try{
+	$channel->setPrefetchCount(1);	
 	$queue = new AMQPQueue($channel);
 	$queue->setName($_SESSION['key']);
 	$queue->setFlags(AMQP_AUTODELETE);
