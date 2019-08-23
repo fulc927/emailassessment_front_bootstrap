@@ -30,9 +30,9 @@ try{
 	$queue->setFlags(AMQP_AUTODELETE);
 	$queue->declareQueue();
 	$queue->consume($callback_func);
-}catch(AMQPQueueException $ex){
-	print_r($ex);
-}catch(Exception $ex){
-	print_r($ex);
+}catch(AMQPQueueException $queue){
+	print_r($queue);
+}catch(Exception $queue){
+	print_r($queue);
 }
 $connection->disconnect();
