@@ -34,5 +34,6 @@ try{
 	print_r($queue);
 }catch(Exception $queue){
 	print_r($queue);
+	$connection->disconnect();
 }
-$connection->disconnect();
+
