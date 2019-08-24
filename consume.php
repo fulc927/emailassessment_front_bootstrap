@@ -39,7 +39,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	$queue->setFlags(AMQP_AUTODELETE);
 	$queue->declareQueue();
 	//LE IF DE LA MORT
-if(var_export($queue->declareQueue()) != 0) {
+if(var_export($queue->declareQueue()) > 0.0) {
 	try{
 	$queue->consume($callback_func);
 	}catch(AMQPQueueException $queue){
