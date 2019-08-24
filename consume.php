@@ -50,5 +50,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 }
 } else {
 	echo "ben à pas de queue";
+	                	return false;
+		$connection->disconnect();
 }
 		
