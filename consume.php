@@ -18,6 +18,8 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
             // Bail after 1 message
 		$_SESSION['key'] = '';
                 return false;
+        }else {  
+	$connection->disconnect();
         }
 	};
 	try{
