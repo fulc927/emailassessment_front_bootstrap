@@ -17,6 +17,8 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	$exchange->setType(AMQP_EX_TYPE_TOPIC);
 	$exchange->declareExchange();
 	$exchange->getArgument($_SESSION['key']);
+			echo $exchange;
+
 	////////
 		$callback_func = function(AMQPEnvelope $message, AMQPQueue $queue) use (&$max_jobs) {
 		global $i;
@@ -48,6 +50,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	} else {  
     	echo "lek test getargument est de la merde";
 	echo $exchange;
+		echo $_SESSION['key'];
 
 }
 } else {
