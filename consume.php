@@ -16,7 +16,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	$exchange->setName($exchange_name);
 	$exchange->setType(AMQP_EX_TYPE_TOPIC);
 	$exchange->declareExchange();
-	$exchange->getArgument();
+	$exchange->getArgument($_SESSION['key']);
 	////////
 		$callback_func = function(AMQPEnvelope $message, AMQPQueue $queue) use (&$max_jobs) {
 		global $i;
