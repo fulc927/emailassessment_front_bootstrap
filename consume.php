@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_POST['key']) && !empty($_POST['key'])) {
+if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
        
 
 $connection = new AMQPConnection();
