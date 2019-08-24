@@ -24,7 +24,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
         if ($i = 1) {
             // Bail after 1 message
 		$_SESSION['key'] = '';
-            return false;
+                return false;
         }
 	};
 	try{
