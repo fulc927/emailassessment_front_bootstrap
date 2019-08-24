@@ -16,7 +16,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	$exchange->setName($exchange_name);
 	$exchange->setType(AMQP_EX_TYPE_TOPIC);
 	$exchange->declareExchange();
-	$exchange_seb->getArgument();
+	$exchange->getArgument();
 	////////
 		$callback_func = function(AMQPEnvelope $message, AMQPQueue $queue) use (&$max_jobs) {
 		global $i;
@@ -30,7 +30,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
         	}
 		};
 	//LE IF DE LA MORT
-	if($exchange_seb==$_SESSION['key']) {
+	if($exchange==$_SESSION['key']) {
 	try{
 	//$channel->setPrefetchCount(1);	
 	$queue = new AMQPQueue($channel);
