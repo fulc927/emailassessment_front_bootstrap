@@ -47,11 +47,14 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 
 	} else {  
     	echo "lek test getargument est de la merde";
-	echo $_SESSION['key'];
+	echo $exchange;
+
 }
 } else {
-	echo "ben à pas de queue";
+	echo "score deaja counsumé";
 	                	return false;
 		$connection->disconnect();
+		echo $_SESSION['key'];
+
 }
 		
