@@ -1,9 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
-       echo $_SESSION['key'];  
-	   
-	$connection = new AMQPConnection();
+       	$connection = new AMQPConnection();
 	$config = parse_ini_file('./amqpconnect.ini'); 
 	$connection->setHost($config['servername']);
 	$connection->setLogin($config['username']);
