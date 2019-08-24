@@ -30,7 +30,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
         	}
 		};
 	//LE IF DE LA MORT
-	if($exchange=true) {
+	if($exchange=false) {
 	try{
 	//$channel->setPrefetchCount(1);	
 	$queue = new AMQPQueue($channel);
