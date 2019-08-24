@@ -10,14 +10,9 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	//Create and declare channel
 	$channel = new AMQPChannel($connection);
 	$callback_func = function(AMQPEnvelope $message, AMQPQueue $queue) use (&$max_jobs) {
-	//$queue->ack($message->getDeliveryTag());
 	global $i;
-	//if(isset($_POST['action']) && !empty($_POST['action'])) {
         //echo json_encode($message->getBody()). "\n";
         echo "Message $i: " . $message->getBody() . "\n";
-
-         //}
-
         $i++;
         if ($i = 1) {
             // Bail after 1 message
