@@ -9,24 +9,33 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	$connection->connect();
 	//Create and declare channel
 	$channel = new AMQPChannel($connection);
-	$callback_func = function(AMQPEnvelope $message, AMQPQueue $queue) use (&$max_jobs) {
-	global $i;
-        //echo json_encode($message->getBody()). "\n";
-        echo "Message $i: " . $message->getBody() . "\n";
-        $i++;
-        if ($i = 1) {
-            // Bail after 1 message
-		$_SESSION['key'] = '';
-                return false;
-        }
-	};
+	//
+	
+	$exchange = new AMQPExchange($channel);
+	$exchange_name = 'topic_spamass';
+	$exchange->setName($exchange_name);
+	$exchange->declareExchange();
+	$exchange_seb->getArgument();
+	////////
+		$callback_func = function(AMQPEnvelope $message, AMQPQueue $queue) use (&$max_jobs) {
+		global $i;
+        	//echo json_encode($message->getBody()). "\n";
+        	echo "Message $i: " . $message->getBody() . "\n";
+        	$i++;
+        	if ($i = 1) {
+            	// Bail after 1 message
+			$_SESSION['key'] = '';
+                	return false;
+        	}
+		};
+	//LE IF DE LA MORT
+	if($exchange_seb==$_SESSION['key']) {
 	try{
 	//$channel->setPrefetchCount(1);	
 	$queue = new AMQPQueue($channel);
 	$queue->setName($_SESSION['key']);
 	$queue->setFlags(AMQP_AUTODELETE);
 	$queue->declareQueue();
-		//faireencore un if pour checker si queue existe, le cas échéant disconnect et éventuellement reload
 	$queue->consume($callback_func);
 	}catch(AMQPQueueException $queue){
 	print_r($queue);
@@ -39,3 +48,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
     	echo "N0, keà is not set";
 	echo $_SESSION['key'];
 }
+} else {
+	echo "ben à pas de queue";
+}
+		
