@@ -31,7 +31,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
         	}
 		};
 	//LE IF DE LA MORT
-	if($exchange=false) {
+	if($exchange=true) {
 	try{
 	//$channel->setPrefetchCount(1);	
 	$queue = new AMQPQueue($channel);
@@ -47,9 +47,8 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	}
 
 	} else {  
-    	echo "getargument a renvoyé false donc le routing_key a été effacé";
-	echo $exchange;
-		echo $_SESSION['key'];
+    	echo "getargument a renvoyé false donc aucun email nna été encore envoyé ";
+			echo $_SESSION['key'];
 
 }
 } else {
