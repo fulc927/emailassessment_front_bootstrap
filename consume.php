@@ -9,14 +9,13 @@ $connection->connect();
 //Create and declare channel
 $channel = new AMQPChannel($connection);
 $callback_func = function(AMQPEnvelope $message, AMQPQueue $queue) use (&$max_jobs) {
-	//$message = $queue->get(AMQP_AUTOACK);
-	$queue->ack($message->getDeliveryTag());
+	//$queue->ack($message->getDeliveryTag());
 	global $i;
-	if(isset($_POST['action']) && !empty($_POST['action'])) {
+	//if(isset($_POST['action']) && !empty($_POST['action'])) {
         //echo json_encode($message->getBody()). "\n";
         echo "Message $i: " . $message->getBody() . "\n";
 
-         }
+         //}
 
         $i++;
         if ($i = 1) {
