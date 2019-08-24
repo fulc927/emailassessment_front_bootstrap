@@ -40,15 +40,8 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	$queue->declareQueue();
 	//LE IF DE LA MORT
 if(var_export($queue->declareQueue()) > 0.0) {
-	try{
 	$queue->consume($callback_func);
-	}catch(AMQPQueueException $queue){
-	print_r($queue);
-	}catch(Exception $queue){
-	print_r($queue);
 	$connection->disconnect();
-	}
-
 	} else {  
     	echo "la queue est vide";
 			echo $_SESSION['key'];
