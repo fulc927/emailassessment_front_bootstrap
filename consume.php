@@ -25,6 +25,7 @@ $callback_func = function(AMQPEnvelope $message, AMQPQueue $queue) use (&$max_jo
         $i++;
         if ($i = 1) {
             // Bail after 1 message
+		$_SESSION['key'] = '';
             return false;
         }
 	};
