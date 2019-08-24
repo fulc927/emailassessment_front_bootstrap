@@ -14,7 +14,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
         //echo json_encode($message->getBody()). "\n";
         echo "Message $i: " . $message->getBody() . "\n";
         $i++;
-        if ($i = 0) {
+        if ($i < 1) {
             // Bail after 1 message
 		$connection->disconnect();
         }
