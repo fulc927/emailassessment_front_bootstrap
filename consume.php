@@ -28,7 +28,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
         }
 	};
 	try{
-	$channel->setPrefetchCount(1);	
+	//$channel->setPrefetchCount(1);	
 	$queue = new AMQPQueue($channel);
 	$queue->setName($_SESSION['key']);
 	$queue->setFlags(AMQP_AUTODELETE);
