@@ -32,14 +32,15 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
                 	return false;
         	}
 		};
-	//LE IF DE LA MORT
-	if($exchange=true) {
-	try{
+	
 	//$channel->setPrefetchCount(1);	
 	$queue = new AMQPQueue($channel);
 	$queue->setName($_SESSION['key']);
 	$queue->setFlags(AMQP_AUTODELETE);
 	$queue->declareQueue();
+	//LE IF DE LA MORT
+if(var_export($queue->declareQueue()) != 0) {
+	try{
 	$queue->consume($callback_func);
 	}catch(AMQPQueueException $queue){
 	print_r($queue);
@@ -49,7 +50,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	}
 
 	} else {  
-    	echo "getargument a renvoyé false donc aucun email nna été encore envoyé ";
+    	echo "la queue est vide";
 			echo $_SESSION['key'];
 
 }
