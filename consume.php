@@ -14,6 +14,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	$exchange = new AMQPExchange($channel);
 	$exchange_name = 'topic_spamass';
 	$exchange->setName($exchange_name);
+	$exchange->setType(AMQP_EX_TYPE_TOPIC);
 	$exchange->declareExchange();
 	$exchange_seb->getArgument();
 	////////
