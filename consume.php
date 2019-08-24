@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (isset($_POST['key']) && !empty($_POST['key'])) {
+       
+
 $connection = new AMQPConnection();
 $config = parse_ini_file('./amqpconnect.ini'); 
 $connection->setHost($config['servername']);
@@ -37,3 +40,6 @@ try{
 	$connection->disconnect();
 }
 
+	} else {  
+    echo "N0, keà is not set";
+}
