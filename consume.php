@@ -33,6 +33,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	$queue->setName($_SESSION['key']);
 	$queue->setFlags(AMQP_AUTODELETE);
 	$queue->declareQueue();
+		//faireencore un if pour checker si queue existe, le cas échéant disconnect et éventuellement reload
 	$queue->consume($callback_func);
 	}catch(AMQPQueueException $queue){
 	print_r($queue);
