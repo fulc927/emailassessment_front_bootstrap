@@ -1,7 +1,9 @@
 <?php
 session_start();
 if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
-       
+       echo $_SESSION['key'];
+	       
+	   
 
 $connection = new AMQPConnection();
 $config = parse_ini_file('./amqpconnect.ini'); 
@@ -42,4 +44,5 @@ try{
 
 	} else {  
     echo "N0, keà is not set";
+	echo $_SESSION['key'];
 }
