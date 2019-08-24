@@ -46,7 +46,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	}
 
 	} else {  
-    	echo "N0, keà is not set";
+    	echo "lek test getargument est de la merde";
 	echo $_SESSION['key'];
 }
 } else {
