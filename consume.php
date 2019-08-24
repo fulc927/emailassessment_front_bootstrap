@@ -16,8 +16,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
         $i++;
         if ($i = 0) {
             // Bail after 1 message
-		$_SESSION['key'] = '';
-                return false;
+		$connection->disconnect();
         }
 	else {  
 		// Bail after 1 message
