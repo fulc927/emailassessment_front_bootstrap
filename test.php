@@ -28,20 +28,20 @@ try {
 	}	
 	try {
 	$channel->setPrefetchCount(1);	
-	$exchange_name2 = 'topic_spamass';
-	$exchange2 = new AMQPExchange($channel);
-	$exchange2->setType(AMQP_EX_TYPE_TOPIC);
-	$exchange2->setName($exchange_name2);
-	$exchange2->declareExchange();
+	//$exchange_name2 = 'topic_spamass';
+	//$exchange2 = new AMQPExchange($channel);
+	//$exchange2->setType(AMQP_EX_TYPE_TOPIC);
+	//$exchange2->setName($exchange_name2);
+	//$exchange2->declareExchange();
 	$queue = new AMQPQueue($channel);
 	$queue->setFlags(AMQP_AUTODELETE);
 	$queue->setName($bdkey);
 	$queue->declareQueue();
 	//$queue->bind($exchange_name2, $bdkey);
-    } catch(AMQPQueueException $exchange2) {
-	print_r($exchange2);
-    } catch(Exception $exchange2) {
-	print_r($exchange2);	
+    } catch(AMQPQueueException $queue) {
+	print_r($queue);
+    } catch(Exception $queue) {
+	print_r($queue);	
 $connection->disconnect();
 	}	
 }
