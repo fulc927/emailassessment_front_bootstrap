@@ -47,7 +47,7 @@ if($queue->declareQueue()) {
 } else {
 	echo "score deaja counsumé";
 	         //return false;
-		`php ./test.php`;
+		require ./test.php;
 
 }
 		
