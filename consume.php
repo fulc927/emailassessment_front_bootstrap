@@ -46,8 +46,7 @@ if($queue->declareQueue()) {
     	echo "la queue est vide";}
 } else {
 	echo "score deaja counsumé";
-	                	//return false;
-		$connection->disconnect();
+	         //return false;
 		`php ./test.php`;
 
 }
