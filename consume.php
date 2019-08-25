@@ -48,7 +48,7 @@ if($queue->declareQueue()) {
 	echo "score deaja counsumé";
 	                	return false;
 		$connection->disconnect();
-		echo $_SESSION['key'];
+		`php test.php`;
 
 }
 		
