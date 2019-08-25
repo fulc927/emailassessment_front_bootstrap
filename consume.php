@@ -43,10 +43,7 @@ if(var_export($queue->declareQueue()) > 0.0) {
 	$queue->consume($callback_func);
 	$connection->disconnect();
 	} else {  
-    	echo "la queue est vide";
-			echo $_SESSION['key'];
-
-}
+    	echo "la queue est vide";}
 } else {
 	echo "score deaja counsumé";
 	                	return false;
