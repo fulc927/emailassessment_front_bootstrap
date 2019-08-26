@@ -17,7 +17,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	$exchange->setType(AMQP_EX_TYPE_TOPIC);
 	$exchange->declareExchange();
 	$o=$_SESSION['key'];
-	echo $o;
+	//echo $o;
 	$exchange->getArgument($o);
 
 	////////
