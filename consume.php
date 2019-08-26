@@ -43,9 +43,9 @@ if($queue->declareQueue()) {
 	$queue->consume($callback_func);
 	$connection->disconnect();
 	} else {  
-    	echo "la queue est vide";}
+    	//echo "la queue est vide";}
 } else {
-	echo "score deaja counsumé";
+	//echo "score deaja counsumé";
 	         //return false;
 		require 'test.php';
 }
