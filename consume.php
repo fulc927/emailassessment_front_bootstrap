@@ -43,7 +43,7 @@ if($queue->declareQueue()) {
 	$queue->consume($callback_func);
 	$connection->disconnect();
 	} else {  
-    	//echo "la queue est vide";}
+    	echo "Commencez par envoyer un email à l'adresse ci-dessus ;-)";}
 } else {
 	//echo "score deaja counsumé";
 	         //return false;
