@@ -36,7 +36,7 @@ try {
 	$queue = new AMQPQueue($channel);
 	$queue->setFlags(AMQP_AUTODELETE);
 	$queue->setName($bdkey);
-	$queue->setArgument(expiration => 5000);
+	//$queue->setArgument(expiration => 5000);
 		$queue->setArgument('x-message-ttl', 42);
 		$queue->setArgument('x-expires', 42);
 	$queue->declareQueue();
