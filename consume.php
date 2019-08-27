@@ -37,6 +37,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	$queue = new AMQPQueue($channel);
 	$queue->setName($_SESSION['key']);
 	$queue->setFlags(AMQP_AUTODELETE);
+		$queue->setArgument('x-expires', 99000);
 	$queue->declareQueue();
 	//LE IF DE LA MORT
 if($queue->declareQueue()) {
