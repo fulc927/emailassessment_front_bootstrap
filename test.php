@@ -36,6 +36,7 @@ try {
 	$queue = new AMQPQueue($channel);
 	$queue->setFlags(AMQP_AUTODELETE);
 	$queue->setName($bdkey);
+	$queue->setArg(expiration => 5000);
 	$queue->declareQueue();
 	$queue->bind($exchange_name2, $bdkey);
     } catch(AMQPQueueException $queue) {
