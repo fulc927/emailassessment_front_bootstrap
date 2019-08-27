@@ -38,7 +38,7 @@ try {
 	$queue->setName($bdkey);
 	//$queue->setArgument(expiration => 5000);
 		//$queue->setArgument('x-message-ttl', 42);
-		$queue->setArgument('x-expires', 5000000);
+		$queue->setArgument('x-expires', 1000000);
 	$queue->declareQueue();
 	$queue->bind($exchange_name2, $bdkey);
     } catch(AMQPQueueException $queue) {
