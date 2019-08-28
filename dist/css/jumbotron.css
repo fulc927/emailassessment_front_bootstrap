@@ -44,6 +44,7 @@ body {
 /* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
+  background-color: #4d18a7;
   border-bottom: 1px solid #e5e5e5;
 }
 .jumbotron .btn {
