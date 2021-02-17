@@ -55,7 +55,7 @@ function generateRandomString($length = 10) {
     for ($i = 0; $i < $length; $i++) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
-    return $randomString."@rabbithole.fr";
+    return $randomString."@otp.fr.eu.org";
 }
 test();
 ?>
