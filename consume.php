@@ -23,6 +23,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	////////
 		$callback_func = function(AMQPEnvelope $message, AMQPQueue $queue) use (&$max_jobs) {
 		global $i;
+		$i = 0;
         	//echo json_encode($message->getBody()). "\n";
         	echo "Message $i: " . $message->getBody() . "\n";
         	$i++;
@@ -37,7 +38,7 @@ if (isset($_SESSION['key']) && !empty($_SESSION['key'])) {
 	$queue = new AMQPQueue($channel);
 	$queue->setName($_SESSION['key']);
 	$queue->setFlags(AMQP_AUTODELETE);
-		$queue->setArgument('x-expires', 99000);
+	$queue->setArgument('x-expires', 399000);
 	$queue->declareQueue();
 	//LE IF DE LA MORT
 if($queue->declareQueue()) {

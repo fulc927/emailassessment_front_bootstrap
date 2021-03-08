@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Simple testeur Email fait avec RabbitMQ.</title>
+    <title>Simple testeur Email SPF / DKIM / IPV6.</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
@@ -60,25 +60,61 @@
 		</script>     
 		    
 		<script>
-	       function work() {
-      		$.ajax({
-        	url:"consume.php",
-        	data: {action: 'consume'},
-        	type: "post", //request type
-        	success:function(result){
-         	//alert(result);
-	        $('#result').html(result);
-       		}
-     		});
- 		}
-		//var calculescore = work(function(output){
-  		// here you use the output
-      		//console.log(output);
-       		//});
-      	       //document.getElementById("result").innerHTML = calculescore;
+	function work() {
+if(typeof Promise !== "undefined"){
+  Promise.resolve(
+    $.ajax({
+      url:"consume_test.php",
+      data: {action: 'consume'},
+      type: "post", //request type
+      timeout:15000
+    })
+	  ).then(function(result){
+    console.log(result);
+    $('#result').html(result);
+  }).catch(function(e) {
+    if(e.statusText == 'timeout')
+    {     
+      alert('Native Promise: Failed from timeout'); 
+	    disconnect();
+      //do something. Try again perhaps?
+    }
+  });
+}
+}
+
+
+
+
+//	       function work() {
+ //     		$.ajax({
+  //      	url:"consume_test.php",
+   //     	data: {action: 'consume'},
+    //    	type: "post", //request type
+     //   	success:function(result){
+      //   	//alert(result);
+      //		console.log(result);
+//	        $('#result').html(result);
+ //      		}
+  //   		});
+ //		}
 	       </script>
-		    
-	    <p class="lead">Simple testeur Email fait avec RabbitMQ.</p>
+		   
+
+	<script>
+function disconnect() {
+$.ajax({
+  url: 'disconnect.php',
+  success: function(data) {
+    alert('disconnect the broker');
+  }
+});
+}
+</script>
+
+
+
+	    <p class="lead">Simple testeur Email SPF / DKIM / IPV6.</p>
             <p class="lead" onclick="work()">
             <a href="#" class="btn btn-lg btn-secondary">Résultat</a> </p>
 	    <p id="result" class="result"></p>
@@ -98,26 +134,6 @@
 
     </div>
 	  
-	  
-<div id="features">
-<div class="jumbotron">
-  <h1 class="display-4">Hello, world!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-  </p>
-</div>
-</div>
-
-
-
-<!-- End Jumbotron -->
-
-</div> <!-- End About Section -->
-</div>
-
 
 <!-- End Jumbotron -->
 
